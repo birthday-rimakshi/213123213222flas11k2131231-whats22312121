@@ -31,7 +31,8 @@ def sms_ahoy_reply():
     else:
         try:
             r = requests.get("{}".format(os.environ.get("libbot"))+"&message={}&application={}&offensive=false".format(os.environ.get("appid"),text))
-            print(r)
+            k = "{}".format(os.environ.get("libbot"))+"&message={}&application={}&offensive=false".format(os.environ.get("appid"),text)
+            print(k)
             soup = BeautifulSoup(r.content, 'lxml')
             f_data = soup.find("message")
             resp.message("{}".format(f_data.text))
