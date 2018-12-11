@@ -1,0 +1,6 @@
+Flask	
+gunicorn	
+git+https://github.com/roundar/myjson
+twilio
+bs4
+requests
