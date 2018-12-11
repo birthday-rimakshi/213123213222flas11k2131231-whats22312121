@@ -13,6 +13,7 @@ def sms_ahoy_reply():
     resp = MessagingResponse()
     query = urllib.parse.quote(request.form["Body"])
     text = query.replace(' ', '+')
+    print(text)
 
     if query.startswith("%21"):
         keyword = query[3:]
@@ -30,6 +31,7 @@ def sms_ahoy_reply():
     else:
         try:
             r = requests.get("{}".format(os.environ.get("libbot"))+"&message={}&application={}&offensive=false".format(os.environ.get("appid"),text))
+            print(r)
             soup = BeautifulSoup(r.content, 'lxml')
             f_data = soup.find("message")
             resp.message("{}".format(f_data.text))
